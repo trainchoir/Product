@@ -1,108 +1,125 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
     
-    <!--
-    
-    Leer Theme - v.1.3 - May 13, 2013
-    (c) Renz Abong
-    http://palasantingan.com/
-    Themes at - http://hand-craft.tumblr.com/
-    Powered by Tumblr - http://tumblr.com/
-    
-    -->
-    
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        
         <title>{Title}{block:SearchPage} - Search results{/block:SearchPage}{block:TagPage} - Tag results{/block:TagPage}{block:PermalinkPage}{block:PostSummary} - {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+        
         <link rel="shortcut icon" href="{Favicon}">
+        <link rel="apple-touch-icon" href="{PortraitURL-512}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         {block:Description}
-            <meta name="description" content="{MetaDescription}" />
+        <meta name="description" content="{MetaDescription}" />
         {/block:Description}
+    
+        <!--
         
-        <link href="http://static.tumblr.com/qudkd6d/OcDnl99gb/style.css" rel="stylesheet" type="text/css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="http://static.tumblr.com/qudkd6d/Az6nkemqr/pxuphotoset.min.js"></script>
-        <script src ="//static.tumblr.com/fwgzvyf/l6jnyutne/shythemes.vr.js"></script>
+            theme:              Leer
+            version:            2.0.0 (March 1, 2021)
+            from:               github.com/trainchoir
+            
+            credits:
+            stylesheet reset (meyerweb.com)
+            jQuery 2.2.4 (jquery.com)
+            fluid photosets (pixelunion.net)
+            fluid videos (shythemes.tumblr.com)
+            unnest (neothm.com)
+        
+        -->
+        
+        <link href="https://static.tumblr.com/tpmodsp/cJNqp9l31/reset.css" rel="stylesheet" type="text/css">
+        <link href="https://static.tumblr.com/qudkd6d/OcDnl99gb/style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="https://static.tumblr.com/qudkd6d/Az6nkemqr/pxuphotoset.min.js"></script>
+        <script src="//static.tumblr.com/fwgzvyf/l6jnyutne/shythemes.vr.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                $('.photo-slideshow').pxuPhotoset({
                    lightbox: true,
                    rounded: false,
-                   gutter: '10px',
+                   gutter: '{text:Photoset Gutter}px',
                    borderRadius: '0px',
                    photoset: '.photo-slideshow',
                    photoWrap: '.photo-data',
                    photo: '.pxu-photo'
                });
             });
-            $container.infinitescroll({
-            // your options
-            }, function(){
-            resizeVideos();
-            });
         </script>
         
         <!-- Theme Options -->
-        <!-- <meta name="" content="" /> -->
         
+        {block:Hidden}
         <meta name="image:Background" content="" />
 	    <meta name="image:Header" content="" />
         
-        <meta name="color:Background" content="#ffffff" />
-        <meta name="color:Title" content="#000000" />
-        <meta name="color:Text" content="#000000" />
-        <meta name="color:Links" content="#000000" />
-        <meta name="color:Links Hover" content="#888888" />
+        <meta name="color:Background" content="#fbfbf6" />
+        <meta name="color:Title" content="#333333" />
+        <meta name="color:Text" content="#333333" />
+        <meta name="color:Links" content="#333333" />
+        <meta name="color:Links Hover" content="#777777" />
         <meta name="color:Box" content="#ffffff" />
-        <meta name="color:Pages" content="#000000" />
-        <meta name="color:Pages Hover" content="#888888" />
+        <meta name="color:Navigation" content="#333333" />
+        <meta name="color:Navigation Hover" content="#888888" />
         <meta name="color:Blockquote" content="#dddddd" />
-        <meta name="color:Text Title" content="#000000" />
-        <meta name="color:Link Post" content="#000000" />
+        <meta name="color:Text Post Title" content="#333333" />
+        <meta name="color:Link Post" content="#333333" />
         <meta name="color:Link Post Border" content="#dddddd" />
         <meta name="color:Chat Border" content="#dddddd" />
         <meta name="color:Audio Label" content="#777777" />
         <meta name="color:Audio Label Border" content="#000000" />
         <meta name="color:Answer Post Border" content="#dddddd" />
-        <meta name="color:Post Footer" content="#888888" />
-        <meta name="color:Tags" content="#ba778a" />
+        <meta name="color:Post Footer" content="#777777" />
+        <meta name="color:Tags" content="#777777" />
+        <meta name="color:Pinned Post Label" content="#d00000" />
         <meta name="color:Notes Background" content="#eeeeee" />
         <meta name="color:Notes Border" content="#e5e5e5" />
         <meta name="color:Notes Text" content="#555555" />
-        <meta name="color:Selection" content="#ba778a" />
+        <meta name="color:Selection" content="#d00000" />
         
-        <meta name="select:Post size" content="small" title="Small posts" />
-        <meta name="select:Post size" content="medium" title="Medium posts" />
-        <meta name="select:Post size" content="large" title="Large posts" />	
-        <meta name="select:Post size" content="high-res" title="High Resolution" />	
+        <meta name="font:Title" content="Favorit" />
+        <meta name="font:Text" content="Favorit" />
+        <meta name="font:Text Post Title" content="Favorit" />
+        <meta name="font:Quote Post" content="Favorit" />
         
-        <meta name="if:Fixed background" content="1" />
-        <meta name="if:Stretch background" content="1" />
+        <meta name="select:Post Size" content="regular" title="Regular posts" />
+        <meta name="select:Post Size" content="medium" title="Medium posts" />
+        <meta name="select:Post Size" content="large" title="Large posts" />	
+        <meta name="select:Post Size" content="high_res" title="High Resolution" />	
+        
+        <meta name="if:Enable Custom Fonts" content="0" />
+        <meta name="if:Bold Blog Title" content="0" />
+        <meta name="if:Repeat Background" content="0" />
+        <meta name="if:Fixed Background" content="0" />
+        <meta name="if:Stretch Background" content="0" />
         <meta name="if:Container Box" content="0" />
         <meta name="if:Show Description" content="1" />
-        <meta name="if:Hide captions"  content="0" />
+        <meta name="if:Hide Captions"  content="0" />
+        <meta name="if:Show Pinned Post Label" content="1" />
+        <meta name="if:Show Like And Reblog Buttons" content="1" />
         <meta name="if:Show Tags" content="1" />
-        <meta name="if:Show Post Footer" content="1" />
-        <meta name="if:Faded posts" content="0" />
         
-        <meta name="text:Title" content="'Times New Roman', serif" />
-        <meta name="text:Font" content="Georgia, serif" />
-        <meta name="text:Font Size" content="10.5px" />
-        <meta name="text:Letter Spacing" content="1px" />
-        <meta name="text:Line Height" content="1.7em" />
+        <meta name="text:Title Font" content="" />
+        <meta name="text:Text Font" content="" />
+        <meta name="text:Text Post Title Font" content="" />
+        <meta name="text:Quote Post Font" content="" />
+        <meta name="text:Title Size" content="24" />
+        <meta name="text:Text Size" content="12" />
+        <meta name="text:Letter Spacing" content="0" />
+        <meta name="text:Line Height" content="1.6" />
         <meta name="text:Margin From Top" content="0" />
         <meta name="text:Header Bottom Margin" content="40" />
+        <meta name="text:Photoset Gutter" content="5" />
         <meta name="text:Post Margin" content="80" />
-        <meta name="text:Text Title Font" content="'Roboto', sans-serif" />
-        <meta name="text:Quote Font" content="'Garamond', serif" />
+        <meta name="text:Custom Font Source" content="" />
         <meta name="text:Footer" content="" />
         <meta name="text:Google Analytics ID" content="" />
-        <meta name="text:Disqus shortname" content="" />
-        
-        <link href='https://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
-        
+        <meta name="text:Disqus Shortname" content="" />
+        {/block:Hidden}
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <!-- Custom Font Source -->
         {text:Custom Font Source}
         
@@ -110,17 +127,31 @@
         
         body {
             background-color: {color:Background};
+            {block:IfBackgroundImage}
             background-image: url({image:Background});
-            {block:IfFixedbackground}
+            {/block:IfBackgroundImage}
+            {block:IfRepeatBackground}
+            background-repeat: repeat;
+            {/block:IfRepeatBackground}
+            {block:IfNotRepeatBackground}
+            background-repeat: no-repeat;
+            {/block:IfNotRepeatBackground}
+            {block:IfFixedBackground}
             background-attachment: fixed;
-            {/block:IfFixedbackground}
-            {block:IfStretchbackground}
+            {/block:IfFixedBackground}
+            {block:IfStretchBackground}
             background-size: cover;
-            {/block:IfStretchbackground}
-            font-family: {text:Font};
-            font-size: {text:Font Size};
-            letter-spacing: {text:Letter Spacing};
-            line-height: {text:Line Height};
+            background-position: center center;
+            {/block:IfStretchBackground}
+            {block:IfNotEnableCustomFonts}
+            font-family: {font:Text};
+            {/block:IfNotEnableCustomFonts}
+            {block:IfEnableCustomFonts}
+            font-family: {text:Text Font};
+            {/block:IfEnableCustomFonts}
+            font-size: {text:Text Size}px;
+            letter-spacing: {text:Letter Spacing}px;
+            line-height: {text:Line Height}em;
             color: {color:Text};
             margin: 0px;
         }
@@ -143,16 +174,20 @@
             width: 100%;
             height: 1px;
             margin: 15px 0px;
-            background: #ccc;
+            background: {color:Link Post Border};
         }
         
-        #small, #medium, #large, #high-res {
+        /* Layout Sizes */
+        
+        #regular, #medium, #large, #high_res {
             padding: 40px;
             margin: 0 auto;
-            {block:IfContainerBox}background: {color:Box};{/block:IfContainerBox}
+            {block:IfContainerBox}
+            background: {color:Box};
+            {/block:IfContainerBox}
         }
         
-        #small {
+        #regular {
             width: 500px;
         }
         
@@ -164,48 +199,63 @@
             width: 700px;
         }
         
-        #high-res {
+        #high_res {
             width: 900px;
         }
         
-        #high-res .post {
+        #high_res .post {
             width: 700px;
-            margin: 0px auto;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            {block:IndexPage}
+            margin-bottom: {text:Post Margin}px;
+            {/block:IndexPage}
         }
         
-        #high-res #object {
+        #high_res .object {
             width: 900px !important;
             margin-left: -100px;
             text-align: center;
         }
         
-        header {
+        /* Structure */
+        
+        #header {
             margin-bottom: {text:Header Bottom Margin}px;
             text-align: center;
         }
         
-        #site, .header {
+        .site, #header img {
             margin-top: {text:Margin From Top}px;
         }
         
-        #site a {
-            font-size: 24px;
-            letter-spacing: 0px;
-            font-family: {text:Title};
-            color: {color:Title};
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
         .post {
-            padding-bottom: {Text:Post Margin}px;
-        }
-        
-        .post img, .post embed, .post iframe, .post object, .post figure {
-            max-width: 100%;
+            {block:IndexPage}
+            margin-bottom: {text:Post Margin}px;
+            {/block:IndexPage}
+            {block:PermalinkPage}
+            margin-bottom: 30px;
+            {/block:PermalinkPage}
         }
         
         /* Header */
+        
+        .site a {
+            font-size: {text:Title Size}px;
+            letter-spacing: 0px;
+            {block:IfNotEnableCustomFonts}
+            font-family: {font:Title};
+            {/block:IfNotEnableCustomFonts}
+            {block:IfEnableCustomFonts}
+            font-family: {text:Title Font};
+            {/block:IfEnableCustomFonts}
+            color: {color:Title};
+            {block:IfBoldBlogTitle}
+            font-weight: bold;
+            {/block:IfBoldBlogTitle}
+            text-decoration: none;
+        }
         
         .pages {
             margin-top: 15px;
@@ -214,67 +264,138 @@
         .pages a {
             margin: 0 10px 0 10px;
             text-decoration: none;
-            color: {color:Pages};
+            color: {color:Navigation};
         }
         
         .pages a:hover {
-            color: {color:Pages Hover};
+            color: {color:Navigation Hover};
         }
         
-        #description {
+        .description {
             margin-top: 15px;
         }
         
         /* Posts Styles */
         
+        .post img, .post embed, .post iframe {
+            max-width: 100%;
+        }
+        
+        .post a.tumblr_blog {
+            text-decoration: none;
+        }
+        
+        .tumblr_parent {
+            margin: 10px 0px 0px 0px;
+            padding: 0px;
+            border: none;
+            position: relative;
+        }
+        
+        .tumblr_parent:first-child {
+            margin-top: 0px;
+        }
+        
+        .tumblr_parent p {
+            margin: 1em 0px;
+        }
+        
+        .tumblr_parent:last-child {
+            margin-bottom: 0px !important;
+        }
+        
+        .tumblr_avatar {
+            width: 16px;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0px 5px 0px 0px;
+        }
+        
+        .tumblr_blog {
+            display: inline-block;
+        }
+        
+        .post .figure {
+            margin: 0px;
+        }
+        
+        .post .figure:first-child {
+            margin-top: 10px;
+        }
+        
         .caption {
+            margin-top: 15px;
             {block:IfHidecaptions}
             display: none;
 		    {/block:IfHidecaptions}
         }
         
         blockquote {
-            margin-left: 20px;
+            margin-left: 0px;
             padding-left: 10px;
             border-left: 3px solid;
             border-color: {color:Blockquote};
         }
         
+        a.read_more {
+            color: {color:Text};
+        }
+        
+        span.pinned {
+            color: {color:Pinned Post Label};
+        }
+        
         /* Text */
         
-        .text h2 {
-            font-family: {text:Text Title Font};
+        .text_title {
+            {block:IfNotEnableCustomFonts}
+            font-family: {font:Text Post Title};
+            {/block:IfNotEnableCustomFonts}
+            {block:IfEnableCustomFonts}
+            font-family: {text:Text Post Title Font};
+            {/block:IfEnableCustomFonts}
             font-size: 20px;
             letter-spacing: 0px;
         }
         
-        .text h2 a {
+        .text_title a {
             text-decoration: none;
-            color: {color:Text Title};
+            color: {color:Text Post Title};
         }
         
-        .text h2 a:hover {
-            color: {color:Text Title};
+        .text_title a:hover {
+            color: {color:Text Post Title};
         }
         
         /* Quote */
         
         .quote span {
-            font-family: {text:Quote Font};
+            {block:IfNotEnableCustomFonts}
+            font-family: {font:Quote Post};
+            {/block:IfNotEnableCustomFonts}
+            {block:IfEnableCustomFonts}
+            font-family: {text:Quote Post Font};
+            {/block:IfEnableCustomFonts}
             letter-spacing: 0px;
             font-size: 20px;
             line-height: normal;
         }
         
         .quote .source {
-            margin-top: 15px;
+            margin-top: 10px;
+            text-indent: 30px;
         }
         
         /* Link */
         
         a.link {
             letter-spacing: 0px;
-            font-family: {text:Text Title Font};
+            {block:IfNotEnableCustomFonts}
+            font-family: {font:Text Post Title};
+            {/block:IfNotEnableCustomFonts}
+            {block:IfEnableCustomFonts}
+            font-family: {text:Text Post Title Font};
+            {/block:IfEnableCustomFonts}
             font-size: 20px;
             text-decoration: none;
             color: {color:Link Post};
@@ -291,18 +412,23 @@
         /* Chat */
         
         .chat h2 {
-            font-family: {text:Text Title Font};
+            {block:IfNotEnableCustomFonts}
+            font-family: {font:Text Post Title};
+            {/block:IfNotEnableCustomFonts}
+            {block:IfEnableCustomFonts}
+            font-family: {text:Text Post Title Font};
+            {/block:IfEnableCustomFonts}
             font-size: 20px;
             letter-spacing: 0px;
         }
         
         .chat h2 a {
             text-decoration: none;
-            color: {color:Text Title};
+            color: {color:Text Post Title};
         }
         
         .chat h2 a:hover {
-            color: {color:Text Title};
+            color: {color:Text Post Title};
         }
         
         ul.chat {
@@ -330,20 +456,65 @@
             font-weight: bold;
         }
         
+        /* Video */
+        
+        #regular .video {
+            width: 500px;
+        }
+        
+        #medium .video {
+            width: 620px;
+        }
+        
+        #large .video {
+            width: 700px;
+        }
+        
+        #high_res .video {
+            width: 900px;
+        }
+        
+        .video video, .video iframe {
+            margin-top: 10px;
+            height: default;
+        }
+        
         /* Audio */
         
-        #audio {
+        .audio iframe {
+            height: default;
+        }
+        
+        .audio_table {
             width: 100%;
+            display: table;
             border-spacing: 0px !important;
             border: 0px !important;
             border-collapse: collapse !important;
         }
         
-        #audio tr {
+        .audio_table img {
+            width: 100%;
+        }
+        
+        .audio_table .row {
+            display: table-row;
+        }
+        
+        .audio_table .cell_1, .audio_table .cell_2 {
+            display: table-cell;
             vertical-align: top;
         }
         
-        #audio iframe {
+        .audio_table .cell_1 {
+            width: 50%;
+        }
+        
+        .audio_table .cell_2 {
+            padding-left: 20px;
+        }
+        
+        .audio_table iframe {
             width: 100%;
             height: 40px;
             margin-bottom: 10px;
@@ -355,13 +526,14 @@
             letter-spacing: 0px;
             font-size: 14px;
             font-weight: bold;
+            color: #000;
         }
         
         .track, .artist, .album {
             display: block;
             text-align: center;
             line-height: normal;
-            font-family: 'Courier New', monospace;
+            font-family: 'Courier Prime', monospace;
             font-size: 13px;
             color: {color:Audio Label};
             border-bottom: 1px dashed;
@@ -386,14 +558,19 @@
             margin-right: 10px;
         }
         
+        .asker a, .answerer a {
+            text-decoration: none;
+        }
+        
         /* Post Footer */
         
         .post_footer {
             margin-top: 30px;
             text-align: center;
-            font-family: 'Arial', sans-serif;
-            font-size: 10px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
             color: {color:Post Footer};
+            letter-spacing: 0px;
         }
         
         .post_footer a {
@@ -402,25 +579,67 @@
         }
         
         .tags {
+            letter-spacing: 0px;
+            line-height: normal;
             text-align: center;
-            margin: 30px 0px -20px 0px;
+            margin: 30px 0px -25px 0px;
         }
         
         .tags a {
             text-decoration: none;
             color: {color:Tags};
             margin: 0px 5px;
-            font-family: 'Courier New', monospace;
+            letter-spacing: 0px;
+            font-size: 11px;
+            font-family: 'Courier Prime', monospace;
+        }
+        
+        .post_footer a:hover, .tags a:hover {
+            color: {color:Text};
+        }
+        
+        ul.buttons {
+            margin: 10px auto;
+            padding: 0px;
+            width: 48px;
+            height: 14px;
+        }
+        
+        ul.buttons iframe {
+            height: 14px;
+        }
+        
+        ul.buttons li {
+            list-style-type: none;
+            display: table-cell;
+            margin: 0px 5px;
+            padding: 0px;
+            width: 14px;
+            height: 14px;
+            float: left;
+            cursor: pointer;
+        }
+        
+        .custom-like-button {
+          position: relative;
+          display: block;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
         }
         
         /* Permalink Page */
         
         #disqus_thread {
             margin-bottom: 30px;
+            letter-spacing: 0px;
         }
         
         ol.notes {
-            margin: 0px;
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-bottom: {text:Post Margin}px;
             padding: 0px; 
             background-color: {color:Notes Background};
             font-family: 'Arial', sans-serif;
@@ -468,13 +687,14 @@
         
         /* Extras */
         
-        footer {
+        .footer {
             text-align: center;
         }
         
         #pagination {
             text-align: center;
             margin-bottom: {text:Post Margin}px;
+            color: {color:Post Footer};
         }
         
         #pagination a {
@@ -486,182 +706,110 @@
             color: {color:Text};
         }
         
+        .credit a {
+            text-decoration: none;
+            color: {color:Text};
+        }
+        
+        /* Extras */
+        
         ::-webkit-selection { background: {color:Selection}; color: #fff; }
-
         ::-moz-selection { background: {color:Selection}; color: #fff; }
-        
         ::-ms-selection { background: {color:Selection}; color: #fff; }
-        
         ::-o-selection { background: {color:Selection}; color: #fff; }
-        
         ::selection { background: {color:Selection}; color: #fff; }
         
+        /* Custom CSS */
+        
         {CustomCSS}
+            
         </style>
     </head>
     <body>
     <div id="{select:Post Size}">
-        <header>
-            {block:IfHeaderImage}<center class="header"><a href="/"><img src="{image:Header}"></a></center>{/block:IfHeaderImage}
-            {block:IfNotHeaderImage}<div id="site"><a href="/">{title}</a></div>{/block:IfNotHeaderImage}
+        <div id="header">
+            {block:IfHeaderImage}
+            <a href="/"><img src="{image:Header}"></a>
+            {/block:IfHeaderImage}
+            {block:IfNotHeaderImage}
+            <div class="site"><a href="/">{title}</a></div>
+            {/block:IfNotHeaderImage}
             
             {block:HasPages} 
             <div class="pages">
                 <a href="/">Home</a>
-                    {block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}
+                {block:Pages}
+                <a href="{URL}">{Label}</a>
+                {/block:Pages}
             </div>
             {/block:HasPages}
             
             {block:IfShowdescription}
             {block:Description}
-                <div id="description">
+                <div class="description">
                     {Description}
                 </div>
             {/block:Description}
             {/block:IfShowdescription}
-        </header>
+        </div>
         
-        <div id="entries">
-            {block:Posts}{block:Text}
-                    <div class="post text">
-                        <article>{block:Title}
-                            <h2>{block:Date}<a href="{Permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h2>
-                        {/block:Title}{Body}</article>
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
+        <div id="posts">
+            {block:Posts}<div class="post">
+                {block:Text}
+                    <div class="text">
+                        {block:Title}
+                            <h2 class="text_title">{block:Date}<a href="{permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h2>
+                        {/block:Title}
+                        {block:Date}{/block:Date}{Body}{block:Date}{/block:Date}
                     </div>
                 {/block:Text}{block:Photo}
-                    <div class="post photo">
-                        <div id="object">{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />{LinkCloseTag}</div>
-
+                    <div class="photo">
+                        <div class="object">{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}</div>
+    
                         {block:Caption}
                             <div class="caption">{Caption}</div>
                         {/block:Caption}
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
                     </div>
                 {/block:Photo}{block:Panorama}
-                    <div class="post panorama">
-                    <div id="object">
+                    <div class="panorama">
+                    <div class="object">
                         {LinkOpenTag}
-                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
                         {LinkCloseTag}
                     </div>
                         {block:Caption}
                             <div class="caption">{Caption}</div>
                         {/block:Caption}
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
                     </div>
                 {/block:Panorama}{block:Photoset}
-                    <div class="post photoset">
-                    <div id="object">
-                        <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">{block:Photos}<div class="photo-data"><div class="pxu-photo"><img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}"></div><a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a></div>{/block:Photos}</div>
-                    </div>
+                    <div class="photoset">
+                        <div class="object">
+                            <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">{block:Photos}<div class="photo-data"><div class="pxu-photo"><img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}"></div><a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a></div>{/block:Photos}</div>
+                        </div>
                         {block:Caption}
                             <div class="caption">{Caption}</div>
                         {/block:Caption}
-                        
-                        {block:IfShowtags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowtags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
                     </div>
                 {/block:Photoset}{block:Quote}
-                    <div class="post quote">
-                        <span>"{Quote}"</span>
-
+                    <div class="quote">
+                        <h2>"{Quote}"</h2>
                         {block:Source}
-                            <div class="source">&#151{Source}</div>
+                            <div class="source">&mdash; {Source}</div>
                         {/block:Source}
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
                     </div>
                 {/block:Quote}{block:Link}
-                    <div class="post link">
+                    <div class="link">
                         <a href="{URL}" class="link" {Target}>{Name}</a>
-
+    
                         {block:Description}
-                            <div class="description">{Description}</div>
+                            <div class="caption">{Description}</div>
                         {/block:Description}
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
                     </div>
                 {/block:Link}{block:Chat}
-                    <div class="post chat">
+                    <div class="chat">
                         {block:Title}
-                            <h2>{block:Date}<a href="{Permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h2>
+                            <h3 class="text_title">{block:Date}<a href="{permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h3>
                         {/block:Title}
-
                         <ul class="chat">
                             {block:Lines}
                                 <li class="{Alt} user_{UserNumber}">
@@ -671,137 +819,116 @@
                                 </li>
                             {/block:Lines}
                         </ul>
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
                     </div>
                 {/block:Chat}{block:Video}
-                    <div class="post video">
-                        <div id="object"><div class="video">{Video-500}</div></div>
-                        {block:Caption}
-                            <div class="caption">{Caption}</div>
-                        {/block:Caption}
-                        
-                        {block:IfShowtags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+                    <div class="object">
+                        <div class="video">    
+                            {Video-500}
                         </div>
-                        {/block:HasTags}
-                        {/block:IfShowtags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
                     </div>
-                {/block:Video}{block:Audio}
-                    <div class="post audio">
-                        <table id="audio" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td width="50%">
-                                    {block:AlbumArt}
-                                        <img src="{AlbumArtURL}" />
-                                    {/block:AlbumArt}
-                                </td>
-                                <td style="padding-left: 20px;">
-                                    {AudioPlayerGrey}
-                                    {block:TrackName}
-                                        <div class="label">Track:</div><div class="track">{TrackName}</div>
-                                    {/block:TrackName}
-                                    {block:Artist}
-                                        <div class="label">Artist:</div><div class="artist">{Artist}</div>
-                                    {/block:Artist}
-                                    {block:Album}
-                                        <div class="label">Album:</div><div class="album">{Album}</div>
-                                    {/block:Album}
-                                </td>
-                            </tr>
-                        </table>
                         {block:Caption}
                             <div class="caption">{Caption}</div>
                         {/block:Caption}
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+                {/block:Video}{block:Audio}
+                    <div class="audio">
+                        <div class="audio_table">
+                            <div class="cell_1">
+                                {block:AlbumArt}
+                                    <img src="{AlbumArtURL}">
+                                {/block:AlbumArt}
+                            </div>
+                            <div class="cell_2">
+                                {AudioPlayerGrey}
+                                {block:TrackName}
+                                    <div class="label">Track:</div><div class="track">{TrackName}</div>
+                                {/block:TrackName}
+                                {block:Artist}
+                                    <div class="label">Artist:</div><div class="artist">{Artist}</div>
+                                {/block:Artist}
+                                {block:Album}
+                                    <div class="label">Album:</div><div class="album">{Album}</div>
+                                {/block:Album}
+                            </div>
                         </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
                     </div>
                 {/block:Audio}{block:Answer}
-                        <div class="post"><div class="question"><div class="asker"><img class="asker-avatar" src="{AskerPortraitURL-30}" /> {Asker}</div><div class="asker-question">{Question}</div></div>
-                
+                    <div class="question">
+                        <div class="asker">
+                            <img class="asker-avatar" src="{AskerPortraitURL-30}" /> {Asker}
+                        </div>
+                        <div class="asker-question">
+                            {Question}
+                        </div>
+                    </div>
                     {block:Answerer}
-                        <div class="answer">
-                            <div class="answerer"><img class="answerer-avatar" src="{AnswererPortraitURL-30}" /> {Answerer}</div><div class="answerer-answer">{Answer}</div></div>
+                    <div class="answer">
+                        <div class="answerer">
+                            <img class="answerer-avatar" src="{AnswererPortraitURL-30}" /> {Answerer}
+                        </div>
+                        <div class="answerer-answer">
+                            {Answer}
+                        </div>
+                    </div>
                     {/block:Answerer}
-                
                     <div class="replies">
                         {Replies}
                     </div>
-                        
-                        {block:IfShowTags}
-                        {block:HasTags}
-                        <div class="tags">
-                        {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-                        </div>
-                        {/block:HasTags}
-                        {/block:IfShowTags}
-                        
-                        {block:Date}
-                        <div class="post_footer">
-                        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>{block:IfDisqusShortname} / <a href="{Permalink}#disqus_thread">Leave a comment</a>{/block:IfDisqusShortname}{block:NoteCount} / <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:RebloggedFrom} / Reblogged from:<a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>{block:RebloggedFrom}{block:ContentSource} / Source:<a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource} 
-                        </div><!-- Post Footer -->
-                        {/block:Date}    
-                    </div>
-                {/block:Answer}{block:Date}{block:PermalinkPage}
-                    <div class="post" id="permalink_page">{block:IfDisqusShortname}
-                    <script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
-                    <script type="text/javascript">
-                      (function() {
-                       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                       dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
-                       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                      })();
-                    </script>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
-                    {lang:Blog comments powered by Disqus 2}
-                    {/block:Permalink}
-                    
-                    <script type="text/javascript">
-                    var disqus_shortname = '{text:Disqus Shortname}';
-                    (function () {
-                      var s = document.createElement('script'); s.async = true;
-                      s.src = 'http://{text:Disqus Shortname}.disqus.com/count.js';
-                      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-                    }());
-                    </script>
+                {/block:Answer}
+                {block:IfShowTags}{block:HasTags}
+                <div class="tags">
+                {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+                </div>
+                {/block:HasTags}{/block:IfShowTags}
+                {block:Date}
+                <div class="post_footer">
+                    {block:IfShowPinnedPostLabel}{block:PinnedPostLabel}
+                    <span class="pinned">{PinnedPostLabel}</span> &#8211;
+                    {/block:PinnedPostLabel}{/block:IfShowPinnedPostLabel}
+                    <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>
+                    {block:IfDisqusShortname}
+                    &#8211; <a href="{Permalink}#disqus_thread">Leave a comment</a>
                     {/block:IfDisqusShortname}
-            
-                    {block:PostNotes} 
-                    <div id="notes">{PostNotes}</div>
-                    {/block:PostNotes}</div>
-        {/block:PermalinkPage}{/block:Date}{/block:Posts}
+                    {block:NoteCount} 
+                    &#8211; <a href="{Permalink}#notes">{NoteCountWithLabel}</a>
+                    {/block:NoteCount}
+                    {block:RebloggedFrom}
+                    &#8211; via <a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>
+                    {block:RebloggedFrom}
+                    {block:ContentSource}
+                    &#8211; from <a href="{SourceURL}">{SourceTitle}</a>
+                    {/block:ContentSource}
+                    {block:IfShowLikeAndReblogButtons}
+                    <ul class="buttons">
+                        <li>{LikeButton size="14" color="grey"}</li>
+                        <li>{ReblogButton size="14" color="grey"}</li>
+                    </ul>
+                    {/block:IfShowLikeAndReblogButtons}
+                </div><!-- Post Footer -->
+                {/block:Date}
+                </div>
+                {block:PermalinkPage}
+                {block:Date}{block:IfDisqusShortname} 
+                <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                var disqus_shortname = '{text:Disqus Shortname}'; // Required - Enter shortname in Tumblr Theme Options
+                var disqus_url = '{Permalink}';     /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+                </script>
+            {/block:IfDisqusShortname}{/block:Date}
+                {block:PostNotes}
+                    <div id="notes">
+                        {PostNotes}
+                    </div>
+                {/block:PostNotes}
+                {/block:PermalinkPage}
+            {/block:Posts}
         </div>
         
         <!-- Pagination -->
@@ -816,11 +943,23 @@
 	    {/block:Pagination}
         
         <!-- Footer -->
-        <footer>
+        <div class="footer">
             {text:Footer}
-            <div id="credit">Leer theme by <a href="http://palasantingan.com">Renz Abong</a></div>
-        </footer>
+            <div class="credit"><a href="https://github.com/trainchoir">theme by trainchoir</a></div>
+        </div>
     </div>
+    <script type="text/javascript" src="https://static.tumblr.com/wgg6svp/OoTofxa0c/unnest.min.js"></script>
+    <script type="text/javascript">
+            $('.post').unnest({
+              yourCaption: ".caption, .text", //initial caption selector
+              wrapName: ".tumblr_parent", //separate captions wrapper name
+              newCaptionUsername: true, //if user adds new caption, have their names on it
+              originalPostCaptionUsername: false, //if user adds new caption on post without an already existing caption
+              tumblrAvatars: true, //with or without tumblr avatars before captions
+              tumblrAvatarClass: ".tumblr_avatar", //the class applied to tumblr avatars
+              usernameColon: false //removes that fucking colon like who asked you tumblr no one wants it
+            });
+        </script>
     {block:IfGoogleAnalyticsID}
         <script>
             var _gaq=[['_setAccount','{text:Google Analytics ID}'],['_trackPageview']];
