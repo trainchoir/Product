@@ -17,7 +17,7 @@
         <!--
         
             theme:              Leer
-            version:            2.0.0 (March 1, 2021)
+            version:            2.0.1 (March 7, 2021)
             from:               github.com/trainchoir
             
             credits:
@@ -83,10 +83,13 @@
         <meta name="font:Text Post Title" content="Favorit" />
         <meta name="font:Quote Post" content="Favorit" />
         
-        <meta name="select:Post Size" content="regular" title="Regular posts" />
-        <meta name="select:Post Size" content="medium" title="Medium posts" />
-        <meta name="select:Post Size" content="large" title="Large posts" />	
-        <meta name="select:Post Size" content="high_res" title="High Resolution" />	
+        <meta name="select:Posts Size" content="regular" title="Regular posts" />
+        <meta name="select:Posts Size" content="medium" title="Medium posts" />
+        <meta name="select:Posts Size" content="large" title="Large posts" />	
+        <meta name="select:Posts Size" content="high_res" title="High Resolution" />
+        <meta name="select:Like And Reblog Buttons Color" content="grey_color" title="Grey"/>
+        <meta name="select:Like And Reblog Buttons Color" content="black_color" title="Black"/>
+        <meta name="select:Like And Reblog Buttons Color" content="white_color" title="White"/>
         
         <meta name="if:Enable Custom Fonts" content="0" />
         <meta name="if:Bold Blog Title" content="0" />
@@ -312,7 +315,7 @@
         }
         
         .tumblr_blog {
-            display: inline-block;
+            color: {color:Text};
         }
         
         .post .figure {
@@ -330,10 +333,20 @@
 		    {/block:IfHidecaptions}
         }
         
+        .post ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        .post ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        } 
+        
         blockquote {
             margin-left: 0px;
             padding-left: 10px;
-            border-left: 3px solid;
+            border-left: 1px solid;
             border-color: {color:Blockquote};
         }
         
@@ -458,19 +471,19 @@
         
         /* Video */
         
-        #regular .video {
+        #regular .video_container {
             width: 500px;
         }
         
-        #medium .video {
+        #medium .video_container {
             width: 620px;
         }
         
-        #large .video {
+        #large .video_container {
             width: 700px;
         }
         
-        #high_res .video {
+        #high_res .video_container {
             width: 900px;
         }
         
@@ -628,6 +641,10 @@
           cursor: pointer;
         }
         
+        .grey_color .black_buttons, .grey_color .white_buttons, .black_color .grey_buttons, .black_color .white_buttons, .white_color .grey_buttons, .white_color .black_buttons {
+            display: none;
+        }
+        
         /* Permalink Page */
         
         #disqus_thread {
@@ -691,18 +708,18 @@
             text-align: center;
         }
         
-        #pagination {
+        .pagination {
             text-align: center;
             margin-bottom: {text:Post Margin}px;
             color: {color:Post Footer};
         }
         
-        #pagination a {
+        .pagination a {
             text-decoration: none;
             color: {color:Text};
         }
         
-        #pagination a:hover {
+        .pagination a:hover {
             color: {color:Text};
         }
         
@@ -726,7 +743,7 @@
         </style>
     </head>
     <body>
-    <div id="{select:Post Size}">
+    <div id="{select:Posts Size}">
         <div id="header">
             {block:IfHeaderImage}
             <a href="/"><img src="{image:Header}"></a>
@@ -756,7 +773,7 @@
         <div id="posts">
             {block:Posts}<div class="post">
                 {block:Text}
-                    <div class="text">
+                    <div class="text video">
                         {block:Title}
                             <h2 class="text_title">{block:Date}<a href="{permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h2>
                         {/block:Title}
@@ -808,7 +825,7 @@
                 {/block:Link}{block:Chat}
                     <div class="chat">
                         {block:Title}
-                            <h3 class="text_title">{block:Date}<a href="{permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h3>
+                            <h2 class="text_title">{block:Date}<a href="{permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h2>
                         {/block:Title}
                         <ul class="chat">
                             {block:Lines}
@@ -822,8 +839,8 @@
                     </div>
                 {/block:Chat}{block:Video}
                     <div class="object">
-                        <div class="video">    
-                            {Video-500}
+                        <div class="video_container video">    
+                            {Video-700}
                         </div>
                     </div>
                         {block:Caption}
@@ -897,13 +914,17 @@
                     {block:RebloggedFrom}
                     &#8211; via <a href="{ReblogParentURL}" title="{ReblogParentTitle}" />{ReblogParentName}</a>
                     {block:RebloggedFrom}
-                    {block:ContentSource}
-                    &#8211; from <a href="{SourceURL}">{SourceTitle}</a>
-                    {/block:ContentSource}
+                    {block:ContentSource}{block:RebloggedFrom}
+                    &#8211; from <a href="{ReblogRootURL}">{ReblogRootName}</a>
+                    {/block:RebloggedFrom}{/block:ContentSource}
                     {block:IfShowLikeAndReblogButtons}
-                    <ul class="buttons">
-                        <li>{LikeButton size="14" color="grey"}</li>
-                        <li>{ReblogButton size="14" color="grey"}</li>
+                    <ul class="buttons {select:Like And Reblog Buttons Color}">
+                        <li class="grey_buttons">{LikeButton size="14" color="grey"}</li>
+                        <li class="grey_buttons no_margin">{ReblogButton size="14" color="grey"}</li>
+                        <li class="black_buttons">{LikeButton size="14" color="black"}</li>
+                        <li class="black_buttons no_margin">{ReblogButton size="14" color="black"}</li>
+                        <li class="white_buttons">{LikeButton size="14" color="white"}</li>
+                        <li class="white_buttons no_margin">{ReblogButton size="14" color="white"}</li>
                     </ul>
                     {/block:IfShowLikeAndReblogButtons}
                 </div><!-- Post Footer -->
@@ -930,24 +951,21 @@
                 {/block:PermalinkPage}
             {/block:Posts}
         </div>
-        
         <!-- Pagination -->
         {block:Pagination}
-		<div id="pagination">
-			<center>
+		<div class="pagination">
 			{block:PreviousPage}<a href="{PreviousPage}">{/block:PreviousPage}Newer{block:PreviousPage}</a>{/block:PreviousPage}
             <span class="pager">&nbsp;&nbsp;&nbsp;{CurrentPage}/{TotalPages}&nbsp;&nbsp;&nbsp;</span>
 			{block:NextPage}<a href="{NextPage}">{/block:NextPage}Older{block:NextPage}</a>{/block:NextPage}
-			</center>
 		</div>
 	    {/block:Pagination}
-        
         <!-- Footer -->
         <div class="footer">
             {text:Footer}
             <div class="credit"><a href="https://github.com/trainchoir">theme by trainchoir</a></div>
         </div>
     </div>
+    <!--{block:ContentSource}{SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo}{/block:ContentSource}-->
     <script type="text/javascript" src="https://static.tumblr.com/wgg6svp/OoTofxa0c/unnest.min.js"></script>
     <script type="text/javascript">
             $('.post').unnest({
@@ -958,6 +976,11 @@
               tumblrAvatars: true, //with or without tumblr avatars before captions
               tumblrAvatarClass: ".tumblr_avatar", //the class applied to tumblr avatars
               usernameColon: false //removes that fucking colon like who asked you tumblr no one wants it
+            });
+            $container.infinitescroll({
+            // your options
+            }, function(){
+            resizeVideos();
             });
         </script>
     {block:IfGoogleAnalyticsID}
