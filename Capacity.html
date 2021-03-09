@@ -17,7 +17,7 @@
         <!--
         
             theme:              Capacity
-            version:            1.0.0 (March 6, 2021)
+            version:            1.0.1 (March 9, 2021)
             from:               github.com/trainchoir
             
             credits:
@@ -161,7 +161,7 @@
             display: none;
         }
         
-        .small .credit {
+        .small .credit, .small ol.notes {
             width: 420px;
         }
         
@@ -181,7 +181,7 @@
             display: none;
         }
         
-        .regular .credit {
+        .regular .credit, .regular ol.notes {
             width: 520px;
         }
         
@@ -309,6 +309,16 @@
             border-left: 1px solid {color:Blockquote};
         }
         
+        .post ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        .post ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+        
         a.read_more {
             color: {color:Text};
         }
@@ -380,10 +390,6 @@
             list-style-type: none;
             margin: 0px;
             padding: 0px;
-        }
-        
-        span.label {
-            font-weight: bold;
         }
         
         /* Link */
@@ -466,6 +472,7 @@
         }
         
         .question a, .answer a {
+            color: {color:Text};
             border-bottom: none;
         }
         
@@ -509,7 +516,6 @@
         }
         
         .post_footer {
-            width: 400px;
             background: {color:Posts};
             color: {color:Date And Post Footer};
             padding: 10px;
@@ -568,7 +574,6 @@
         /* Permalink */
         
         ol.notes {
-            width: 420px;
             background: {color:Posts};
             font-size: 10px;
             padding: 0px;
@@ -692,7 +697,7 @@
                         <a href="{Permalink}">{DayOfMonth} {Month} {Year}</a>
                         {block:RebloggedFrom}
                         <div class="reblog_source">
-                            <a href="{ReblogParentURL}" title="{ReblogParentName}"><img src="{ReblogParentPortraitURL-16}"></a></a>
+                            <a href="{ReblogParentURL}" title="{ReblogParentName}"><img src="{ReblogParentPortraitURL-16}"></a>
                         {block:ContentSource}{block:RebloggedFrom}
                             <a href="{ReblogRootURL}" title="{ReblogRootName}"><img class="reblog_root" src="{ReblogRootPortraitURL-16}"></a>
                         {/block:RebloggedFrom}{/block:ContentSource}
