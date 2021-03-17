@@ -3,7 +3,7 @@
     <head>
     
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width">
         
         <title>{Title}{block:SearchPage} - Search results{/block:SearchPage}{block:TagPage} - Tag results{/block:TagPage}{block:PermalinkPage}{block:PostSummary} - {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
         
@@ -17,7 +17,7 @@
         <!--
         
             theme:              Capacity
-            version:            1.0.1 (March 9, 2021)
+            version:            1.0.2 (March 17, 2021)
             from:               github.com/trainchoir
             
             credits:
@@ -25,6 +25,8 @@
             jQuery 2.2.4 (jquery.com)
             Fluid Photosets (pixelunion.net)
             Unnest (neothm.com)      
+            NPF photosets (codematurgy.tumblr.com)
+            Tooltips (atomiks.github.io)
         
         -->
         
@@ -52,6 +54,9 @@
         <meta name="color:Answer Post Question" content="#eeeeee"/>
         <meta name="color:Blockquote" content="#dddddd"/>
         <meta name="color:Selection" content="#e3d14d"/>
+        <meta name="color:Tooltip" content="#ffff00"/>
+        <meta name="color:Tooltip Text" content="#444444"/>
+        <meta name="color:Selection" content="#e3d14d"/>
         
         <meta name="select:Posts Size" content="small" title="Small"/>
         <meta name="select:Posts Size" content="regular" title="Regular"/>
@@ -75,6 +80,12 @@
         <script type="text/javascript" src="//code.jquery.com/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="https://static.tumblr.com/qudkd6d/Az6nkemqr/pxuphotoset.min.js"></script>
         <script type="text/javascript" src="https://static.tumblr.com/wgg6svp/OoTofxa0c/unnest.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
+        <script type="text/javascript" src="https://unpkg.com/tippy.js@6"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
+        <link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
         
         <style type="text/css">
         
@@ -84,6 +95,7 @@
             font-size: 11px;
             color: {color:Text};
             line-height: 1.6em;
+            text-align: left;
             overflow-x: hidden;
             margin: 0px;
             padding: 0px;
@@ -246,6 +258,7 @@
             font-size: 12px;
             outline: none;
             text-align: center;
+            cursor: pointer;
         }
         
         .search input::placeholder {
@@ -329,13 +342,15 @@
             padding: 0px;
             margin: 0px 0px 10px 0px;
             font-size: 14px;
+            color: {color:Text};
+            font-weight: normal;
+            line-height: normal;
         }
         
         .text_title a {
             color: {color:Text};
             font-weight: normal;
             border-bottom: none;
-            line-height: normal;
         }
         
         /* Photo */
@@ -351,6 +366,25 @@
         }
         
         /* Photoset */
+        
+        .npf_row {
+            margin-left: 0px !important;
+        }
+        
+        .npf_row img, .npf_col img {
+            border-radius: 0px;
+        }
+        
+        .npf_photoset {
+            margin-top: 10px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .npf_photoset img {
+            cursor: pointer;
+            margin-top: 0px;
+        }
         
         .photo-slideshow {
             border-radius: 2px;
@@ -420,12 +454,16 @@
             width: 500px;
         }
         
-        .video video, .video iframe {
+        .video video, .video iframe, .text video {
             margin-top: 10px;
         }
         
-        .video_container video, .video_container iframe {
+        .video_container video, .video_container iframe, .text video {
             border-radius: 2px;
+        }
+        
+        .text video {
+            max-width: 100%;
         }
         
         /* Audio */
@@ -634,6 +672,20 @@
             border-bottom: none;
         }
         
+        .tippy-box[data-theme~='tooltip'] {
+            background-color: {color:Tooltip};
+            color: {color:Tooltip Text};
+            font-size: 10px;
+        }
+        
+        .tippy-box[data-theme~='tooltip'][data-placement^='bottom'] > .tippy-arrow::before {
+            border-bottom-color: {color:Tooltip};
+        }
+        
+        .tippy-box[data-theme~='tooltip'] > .tippy-arrow::before {
+            transform: scale(.7);
+        }
+        
         ::-webkit-selection { color: #fff; background: {color:Selection}; }
         ::-moz-selection { color: #fff; background: {color:Selection}; }
         ::-ms-selection { color: #fff; background: {color:Selection}; }
@@ -697,9 +749,9 @@
                         <a href="{Permalink}">{DayOfMonth} {Month} {Year}</a>
                         {block:RebloggedFrom}
                         <div class="reblog_source">
-                            <a href="{ReblogParentURL}" title="{ReblogParentName}"><img src="{ReblogParentPortraitURL-16}"></a>
+                            <a href="{ReblogParentURL}" title="{ReblogParentName}"><img data-tippy-content="via {ReblogParentName}" src="{ReblogParentPortraitURL-16}"></a>
                         {block:ContentSource}{block:RebloggedFrom}
-                            <a href="{ReblogRootURL}" title="{ReblogRootName}"><img class="reblog_root" src="{ReblogRootPortraitURL-16}"></a>
+                            <a href="{ReblogRootURL}" title="{ReblogRootName}"><img class="reblog_root" data-tippy-content="from {ReblogRootName}" src="{ReblogRootPortraitURL-16}"></a>
                         {/block:RebloggedFrom}{/block:ContentSource}
                         </div>
                         {/block:RebloggedFrom}
@@ -710,7 +762,13 @@
                         {block:Title}
                             <h2 class="text_title">{block:Date}<a href="{permalink}">{/block:Date}{Title}{block:Date}</a>{/block:Date}</h2>
                         {/block:Title}
-                        {block:Date}{/block:Date}{Body}{block:Date}{/block:Date}
+                        {block:Date}
+                        <div class="text_body">
+                        {/block:Date}
+                            {Body}
+                        {block:Date}
+                        </div>
+                        {/block:Date}
                     </div>
                 {/block:Text}{block:Photo}
                     <div class="photo">
@@ -831,7 +889,7 @@
         <!--{block:ContentSource}{SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo}{/block:ContentSource}-->
         <script type="text/javascript">
             $('.post').unnest({
-              yourCaption: ".caption, .text", //initial caption selector
+              yourCaption: ".caption, .text_body", //initial caption selector
               wrapName: ".tumblr_parent", //separate captions wrapper name
               newCaptionUsername: true, //if user adds new caption, have their names on it
               originalPostCaptionUsername: false, //if user adds new caption on post without an already existing caption
@@ -850,6 +908,17 @@
                 });
             });
             $('img').parent().css("border-bottom", "none");
+            // NPF photoset
+            var npfOptions = {
+               includeCommonPhotosets: true,
+               photosetMargins:"3"
+            }
+            npfPhotosets(".post", npfOptions);
+            $('img, iframe').parent().css("border-bottom", "none");
+            tippy('[data-tippy-content]', {
+                placement: 'bottom',
+                theme: 'tooltip',
+            });
         </script>
     </body>
 </html>
