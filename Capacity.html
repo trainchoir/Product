@@ -17,16 +17,18 @@
         <!--
         
             theme:              Capacity
-            version:            1.0.2 (March 17, 2021)
-            from:               github.com/trainchoir
+            version:            1.0.3 (March 19, 2021)
+            from:               product-themes.tumblr
             
             credits:
+            Fonts and icons (fonts.google.com)
             stylesheet reset (meyerweb.com)
             jQuery 2.2.4 (jquery.com)
             Fluid Photosets (pixelunion.net)
             Unnest (neothm.com)      
             NPF photosets (codematurgy.tumblr.com)
             Tooltips (atomiks.github.io)
+            AOS (github.com/michalsnik)
         
         -->
         
@@ -53,7 +55,7 @@
         <meta name="color:Pagination Hover" content="#242045"/>
         <meta name="color:Answer Post Question" content="#eeeeee"/>
         <meta name="color:Blockquote" content="#dddddd"/>
-        <meta name="color:Selection" content="#e3d14d"/>
+        <meta name="color:Selection" content="#ffff00"/>
         <meta name="color:Tooltip" content="#ffff00"/>
         <meta name="color:Tooltip Text" content="#444444"/>
         <meta name="color:Selection" content="#e3d14d"/>
@@ -62,6 +64,8 @@
         <meta name="select:Posts Size" content="regular" title="Regular"/>
         <meta name="select:Pagination Icon" content="arrow_icon" title="Arrow"/>
         <meta name="select:Pagination Icon" content="chevron_icon" title="Chevron"/>
+        <meta name="select:Photo Lightbox" content="rgba(245,245,245,.90)" title="Light"/>
+        <meta name="select:Photo Lightbox" content="rgba(0,0,0,.90)" title="Dark"/>
         <meta name="select:Like And Reblog Buttons Color" content="grey_color" title="Grey"/>
         <meta name="select:Like And Reblog Buttons Color" content="black_color" title="Black"/>
         <meta name="select:Like And Reblog Buttons Color" content="white_color" title="White"/>
@@ -69,6 +73,8 @@
         <meta name="if:Show Blog Title" content="1"/>
         <meta name="if:Show Search" content="1"/>
         
+        <meta name="text:Text Size" content="11"/>
+        <meta name="text:Line Height" content="1.6"/>
         <meta name="text:Search Placeholder" content="Search"/>
         {/block:Hidden}
         
@@ -86,15 +92,17 @@
         <script type="text/javascript" src="https://unpkg.com/tippy.js@6"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
         <link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css" />
+        <script type="text/javascript" src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
         
         <style type="text/css">
         
         body {
             background-color: {color:Background};
             font-family: 'Courier Prime', monospace;
-            font-size: 11px;
+            font-size: {text:Text Size}px;
             color: {color:Text};
-            line-height: 1.6em;
+            line-height: {text:Line Height}em;
             text-align: left;
             overflow-x: hidden;
             margin: 0px;
@@ -113,12 +121,27 @@
             border-color: {color:Links Border Hover};
         }
         
+        p, h1, h2, h3, h4, h5, h6 {
+            margin: 1em 0px;
+        }
+        
         h1, h2, h3, h4, h5, h6 {
             line-height: normal;
         }
         
         small {
             font-size: 100%;
+        }
+        
+        span.material-icons {
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
         }
         
         /* Structure */
@@ -340,7 +363,7 @@
         
         .text_title {
             padding: 0px;
-            margin: 0px 0px 10px 0px;
+            margin: 0px 0px 10px 0px !important;
             font-size: 14px;
             color: {color:Text};
             font-weight: normal;
@@ -363,6 +386,43 @@
         
         .post_media_photo {
             margin-top: 10px;
+        }
+        
+        img.image_post {
+            cursor: -webkit-zoom-in;
+            cursor: -moz-zoom-in;
+            cursor: -ms-zoom-in;
+            cursor: -o-zoom-in;
+            cursor: zoom-in;
+        }
+        
+        /* Lightbox */
+        
+        .vignette, #vignette {
+            opacity: 0;
+        }
+        
+        .lightbox-image, #tumblr_lightbox img {
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            max-width: none;
+        }
+
+        .tmblr-lightbox, #tumblr_lightbox {
+            background-color: {select:Photo Lightbox} !important;
+        }
+
+        .lightbox-image, #tumblr_lightbox img {
+            border: none !important;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .lightbox-caption, #tumblr_lightbox_caption {
+            visibility: hidden;
         }
         
         /* Photoset */
@@ -597,6 +657,10 @@
             margin: 0px;
         }
         
+        ul.buttons iframe {
+            cursor: pointer !important;
+        }
+        
         .custom-like-button {
           position: relative;
           display: block;
@@ -743,7 +807,7 @@
             </div>
             <div id="posts">
                 {block:Posts}
-                <div class="post">
+                <div class="post" data-aos="fade">
                 {block:Date}
                     <div class="post_header">
                         <a href="{Permalink}">{DayOfMonth} {Month} {Year}</a>
@@ -772,8 +836,7 @@
                     </div>
                 {/block:Text}{block:Photo}
                     <div class="photo">
-                        <a href="{PhotoURL-HighRes}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"></a>
-    
+                        <a href="#" onclick="Tumblr.Lightbox.init([{ width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, low_res: '{PhotoURL-500}', high_res: '{PhotoURL-HighRes}' }]); $('body').toggleClass('tumblr_lightbox_active'); return false"><img src="{PhotoURL-500}" class="image_post" alt="{PhotoAlt}"></a>
                         {block:Caption}
                             <div class="caption">{Caption}</div>
                         {/block:Caption}
@@ -795,7 +858,6 @@
                 {/block:Quote}{block:Link}
                     <div class="link">
                         <a href="{URL}" class="link" {Target}>{Name}</a>
-    
                         {block:Description}
                             <div class="caption">{Description}</div>
                         {/block:Description}
@@ -855,12 +917,12 @@
                 {block:Date}
                     <div class="post_footer">
                         <ul class="buttons {select:Like And Reblog Buttons Color}">
-                            <li class="grey_buttons">{LikeButton size="14" color="grey"}</li>
-                            <li class="grey_buttons no_margin">{ReblogButton size="14" color="grey"}</li>
-                            <li class="black_buttons">{LikeButton size="14" color="black"}</li>
-                            <li class="black_buttons no_margin">{ReblogButton size="14" color="black"}</li>
-                            <li class="white_buttons">{LikeButton size="14" color="white"}</li>
-                            <li class="white_buttons no_margin">{ReblogButton size="14" color="white"}</li>
+                            <li class="grey_buttons" data-tippy-content="Like">{LikeButton size="14" color="grey"}</li>
+                            <li class="grey_buttons no_margin" data-tippy-content="Reblog">{ReblogButton size="14" color="grey"}</li>
+                            <li class="black_buttons" data-tippy-content="Like">{LikeButton size="14" color="black"}</li>
+                            <li class="black_buttons no_margin" data-tippy-content="Reblog">{ReblogButton size="14" color="black"}</li>
+                            <li class="white_buttons" data-tippy-content="Like">{LikeButton size="14" color="white"}</li>
+                            <li class="white_buttons no_margin" data-tippy-content="Reblog">{ReblogButton size="14" color="white"}</li>
                         </ul>
                         <div class="box">
                             
@@ -882,7 +944,7 @@
                 {/block:PostNotes}{/block:PermalinkPage}
                 {/block:Posts}
                 <div class="credit">
-                    <a href="https://github.com/trainchoir">theme by trainchoir</a>
+                    <a href="https://product-themes.tumblr.com">theme by product</a>
                 </div>
             </div>
         </div>
@@ -910,7 +972,7 @@
             $('img').parent().css("border-bottom", "none");
             // NPF photoset
             var npfOptions = {
-               includeCommonPhotosets: true,
+               includeCommonPhotosets: false,
                photosetMargins:"3"
             }
             npfPhotosets(".post", npfOptions);
@@ -919,6 +981,9 @@
                 placement: 'bottom',
                 theme: 'tooltip',
             });
+            AOS.init({
+              duration: 1200,
+            })
         </script>
     </body>
 </html>
