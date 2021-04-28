@@ -17,7 +17,7 @@
         <!--
         
             theme:              Formula
-            version:            1.0.0 (April 9, 2021)
+            version:            1.0.1 (April 28, 2021)
             from:               product-themes.tumblr
             
             credits:
@@ -106,7 +106,7 @@
         <!-- External fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Michroma&family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://static.tumblr.com/tpmodsp/cJNqp9l31/reset.css" rel="stylesheet" type="text/css">
         <!-- jquery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -124,12 +124,13 @@
         <script type="text/javascript" src="https://static.tumblr.com/fwgzvyf/Oj1o08f6h/shythemes.vr.js"></script>
         <!-- Masonry -->
         <script type="text/javascript" src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        <!-- Images loaded -->
         <script type="text/javascript" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
         <!-- AOS -->
-        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-toward-subtle.css">
         <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css" />
         <script type="text/javascript" src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
         <!-- Tippy -->
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-toward-subtle.css">
         <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
@@ -237,6 +238,10 @@
         
         a.jump_page:hover {
             color: {color:Pagination Jump Page Hover};
+        }
+        
+        #control span.material-icons-round {
+            color: {color:Nav Bar Links};
         }
         
         .tippy-box[data-theme~='tooltip'] {
@@ -408,6 +413,10 @@
         .credit a {
             color: #aaa;
         }
+        
+        .change_color span.material-icons-round {
+            color: #21282e !important;
+        }
         {/block:IfNotDarkTheme}
         
         {block:IfDarkTheme}
@@ -563,6 +572,10 @@
         
         .credit a {
             color: #aaa;
+        }
+        
+        .change_color span.material-icons-round {
+            color: #eee !important;
         }
         {/block:IfDarkTheme}
         
@@ -790,9 +803,9 @@
         }
         
         .blog_title a {
-            font-family: 'Jura', sans-serif;
+            font-family: 'Michroma', sans-serif;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 22px;
             border-bottom: none;
         }
         
@@ -980,13 +993,13 @@
             display: none;
         }
         
+        .tumblr_parent > .tumblr_blog + .tmblr-full {
+            margin-top: 10px;
+        }
+        
         .tumblr_parent > ul:first-child,
         .tumblr_parent > ol:fisrt-child {
             margin-top: 10px !important;
-        }
-        
-        .tumblr_parent > .tumblr_blog + .tmblr-full {
-            margin-top: 10px;
         }
         
         .tmblr-full {
@@ -1304,8 +1317,16 @@
             border-bottom: none;
         }
         
-        .question p {
-            margin: 5px 0px 0px 0px;
+        .asker-question p:last-of-type,
+        .answerer-answer p:last-of-type {
+            margin-bottom: 0px !important;
+        }
+        
+        .asker-question > .tmblr-full,
+        .asker-question > .npf_photoset,
+        .answerer-answer > .tmblr-full,
+        .answerer-answer > .npf_photoset {
+            margin-top: 10px !important;
         }
         
         .answer {
@@ -1314,10 +1335,6 @@
         
         .answerer {
             margin-bottom: 5px;
-        }
-        
-        .answerer-answer > .tmblr-full:first-child {
-            margin-top: 10px !important;
         }
         
         /* 
@@ -1835,7 +1852,7 @@
         }
         
         {block:IfNotHeaderImage}
-        .gear_icon {
+        #control {
             height: 50px;
             width: 50px;
             line-height: 50px;
@@ -1847,9 +1864,8 @@
             cursor: pointer;
         }
         
-        .gear_icon span.material-icons-round {
+        #control span.material-icons-round {
             font-size: 18px;
-            color: {color:Nav Bar Links};
             vertical-align: middle;
             margin-top: -3px;
         }
@@ -1889,7 +1905,7 @@
         </style>
     </head>
     <body>
-        <div class="gear_icon"><span class="material-icons-round">settings</span></div>
+        <div id="control"><span class="material-icons-round">settings</span></div>
     {block:IfHeaderImage}
         <div id="header"></div>
     {/block:IfHeaderImage}
@@ -2195,9 +2211,9 @@
                                 {/block:NotReblog}
                                 {block:RebloggedFrom}
                                     <li class="post_source original">
-                                        <a href="{ReblogParentURL}" title="{ReblogParentName}"><img src="{ReblogParentPortraitURL-16}"> Reblogged from {ReblogParentName}</a>
+                                        <a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-16}"> Reblogged from {ReblogParentName}</a>
                                     {block:ContentSource}{block:RebloggedFrom}
-                                        <a href="{ReblogRootURL}" title="{ReblogRootName}"><img class="reblog_root" src="{ReblogRootPortraitURL-16}"> Posted by {ReblogRootName}</a>
+                                        <a href="{ReblogRootURL}"><img class="reblog_root" src="{ReblogRootPortraitURL-16}"> Posted by {ReblogRootName}</a>
                                     {/block:RebloggedFrom}{/block:ContentSource}
                                     </li>
                                 {/block:RebloggedFrom}
@@ -2283,6 +2299,15 @@
         <!--{block:ContentSource}{SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo}{/block:ContentSource}-->
         <!-- Scripts -->
         <script type="text/javascript">
+            {block:IfNotHeaderImage}
+            $(document).on('scroll', function(){
+                if ( $(window).scrollTop() > 50) {
+                    $('#control').addClass('change_color');
+                } else {
+                    $('#control').removeClass('change_color');
+                }
+            });
+            {/block:IfNotHeaderImage}
             // Link border
             $('img, iframe').parent().css('border-bottom', 'none');
             // Search
@@ -2300,7 +2325,7 @@
             });
             // Unnest
             $('.post').unnest({
-                yourCaption: '.caption, .text_body', 
+                yourCaption: '.caption, .text_body, .replies', 
                 wrapName: '.tumblr_parent', 
                 newCaptionUsername: true, 
                 originalPostCaptionUsername: false, 
@@ -2355,13 +2380,11 @@
             new ClipboardJS('.short_url');
             {block:IndexPage}
             // Masonry 
-            var $grid = $('.grid').masonry({
-                itemSelector: '.post',
-                columnWidth: 1
+            var $grid = $('.grid').imagesLoaded( function() {
+                $grid.masonry({
+                    itemSelector: '.post'
+                });
             });
-            $grid.imagesLoaded().progress( function() {
-                $grid.masonry();
-            }); 
             {/block:IndexPage}
         </script>
     </body>
