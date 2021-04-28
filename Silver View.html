@@ -17,7 +17,7 @@
         <!--
         
             theme:              Silver View
-            version:            1.0.0 (March 26, 2021)
+            version:            1.0.1 (April 28, 2021)
             from:               product-themes.tumblr
             
             fonts and icons (fonts.google.com)
@@ -57,15 +57,12 @@
     
         <meta name="if:Show Blog Title" content="0"/>
         <meta name="if:Enable On Scroll Animation" content="1"/>
-        <meta name="if:On Scroll Animation Happens Only Once" content="1"/>
         <meta name="if:Hide Caption" content="0"/>
         <meta name="if:Include Tags Inside Post Footnote" content="0"/>
         
         <meta name="text:Blog Title Size" content="12"/>
         <meta name="text:Navigation Size" content="12"/>
-        <meta name="text:Photoset Gutter" content="3"/>
         <meta name="text:On Scroll Animation Duration" content="800"/>
-        <meta name="text:Photo Lightbox Color" content="rgba(245,245,245,98%)"/>
         {/block:Hidden}
         
         <!-- External fonts -->
@@ -90,9 +87,9 @@
         <script type="text/javascript" src="https://static.tumblr.com/fwgzvyf/Oj1o08f6h/shythemes.vr.js"></script>
         <!-- Masonry -->
         <script type="text/javascript" src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        <!-- Images loaded -->
         <script type="text/javascript" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
         <!-- AOS -->
-        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-toward-subtle.css">
         <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css" />
         <script type="text/javascript" src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
         
@@ -838,7 +835,7 @@
 
         .tmblr-lightbox,
         #tumblr_lightbox {
-            background-color: {text:Photo Lightbox Color} !important;
+            background-color: rgba(245,245,245,98%) !important;
         }
 
         .lightbox-image,
@@ -1010,16 +1007,21 @@
         .answerer-name {
             margin-bottom: 5px;
         }
-        
-        .asker-question p,
-        .answerer-answer p {
-            margin: 0px !important;
-        }
 
         .question a, 
         .answer a {
             color: {color:Text};
             border-bottom: none;
+        }
+        
+        .asker_container a,
+        .answerer_container a {
+            border-bottom: none;
+        }
+        
+        .asker-question p:last-of-type,
+        .answerer-answer p:last-of-type {
+            margin-bottom: 0px !important;
         }
         
         .question img,
@@ -1043,10 +1045,6 @@
             border-radius: 2px;
             box-sizing: border-box;
             position: relative;
-        }
-        
-        .answerer-answer > .tmblr-full {
-            margin-top: 10px;
         }
         
         /* 
@@ -1159,6 +1157,7 @@
             margin: 30px 0px 0px 0px;
             overflow: hidden;
             border: 1px solid #ddd;
+            box-sizing: content-box;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 5%);
         }
         
@@ -1487,7 +1486,7 @@
                             <span>&bull;</span> via&nbsp;<a href="{ReblogParentURL}">{ReblogParentName}</a>
                         {/block:RebloggedFrom}
                         {block:ContentSource}{block:RebloggedFrom}
-                        <span>&bull;</span> from&nbsp;<a href="{ReblogRootURL}">{ReblogRootName}</a>
+                            <span>&bull;</span> from&nbsp;<a href="{ReblogRootURL}">{ReblogRootName}</a>
                         {/block:RebloggedFrom}{/block:ContentSource}
                         {block:IfIncludeTagsInsidePostFootnote}{block:HasTags}
                             <span>&bull;</span> Tags: {block:Tags} <a class="footer_tag" href="{TagURL}">{Tag}</a>{/block:Tags}
@@ -1526,7 +1525,7 @@
             });
             // Unnest
             $('.post').unnest({
-                yourCaption: '.caption, .text_body', 
+                yourCaption: '.caption, .text_body, .replies', 
                 wrapName: '.tumblr_parent', 
                 newCaptionUsername: true, 
                 originalPostCaptionUsername: false, 
@@ -1539,7 +1538,7 @@
                 $('.photo-slideshow').pxuPhotoset({
                     lightbox: true,
                     rounded: false,
-                    gutter: '{text:Photoset Gutter}px',
+                    gutter: '3px',
                     photoset: '.photo-slideshow',
                     photoWrap: '.photo-data',
                     photo: '.pxu-photo'
@@ -1548,7 +1547,7 @@
             // NPF photosets
             var npfOptions = {
                 includeCommonPhotosets: false,
-                photosetMargins: '{text:Photoset Gutter}'
+                photosetMargins: '3'
             }
             npfPhotosets('.post', npfOptions);
             // Fluid video
@@ -1558,18 +1557,14 @@
             // Animation on scroll
             AOS.init({
                 duration: {text:On Scroll Animation Duration},
-            {block:IfOnScrollAnimationHappensOnlyOnce}
                 once: true
-            {/block:IfOnScrollAnimationHappensOnlyOnce}
             });
             {block:IndexPage}
-            // Masonry 
-            var $grid = $('.two_col, .three_col, .three_col_big, .four_col').masonry({
-                itemSelector: '.post',
-                columnWidth: 1
-            });
-            $grid.imagesLoaded().progress( function() {
-                $grid.masonry();
+            // Masonry
+            var $grid = $('.two_col, .three_col, .three_col_big, .four_col').imagesLoaded( function() {
+                $grid.masonry({
+                    itemSelector: '.post'
+                });
             });
             {/block:IndexPage}
         </script>
