@@ -17,7 +17,7 @@
         <!--
         
             theme:              Capacity
-            version:            1.0.4 (April 17, 2021)
+            version:            1.0.5 (April 28, 2021)
             from:               product-themes.tumblr
             
             fonts and icons (fonts.google.com)
@@ -50,7 +50,7 @@
         <meta name="color:Navigation" content="#242045"/>
         <meta name="color:Navigation Hover" content="#ffff00"/>
         <meta name="color:Posts" content="#ffffff"/>
-        <meta name="color:List Bullets" content="#ff0000"/>
+        <meta name="color:List Bullets" content="#ffff00"/>
         <meta name="color:Audio Player" content="#eeeeee"/>
         <meta name="color:Audio Player Info" content="#333333"/>
         <meta name="color:Date And Post Footer" content="#777777"/>
@@ -77,7 +77,6 @@
         <meta name="if:Show Blog Title" content="1"/>
         <meta name="if:Show Search" content="1"/>
         <meta name="if:Enable On Scroll Animation" content="1"/>
-        <meta name="if:On Scroll Animation Happens Only Once" content="1"/>
         
         <meta name="text:Text Size" content="12"/>
         <meta name="text:Line Height" content="19"/>
@@ -103,10 +102,10 @@
         <script type="text/javascript" src="https://static.tumblr.com/qudkd6d/Az6nkemqr/pxuphotoset.min.js"></script>
         <link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
         <!-- AOS -->
-        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-toward-subtle.css">
         <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css" />
         <script type="text/javascript" src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
         <!-- Tippy -->
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-toward-subtle.css">
         <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
@@ -492,7 +491,7 @@
         }
         
         .text_title a,
-        .text_tiel a:hover {
+        .text_title a:hover {
             color: {color:Text};
             border-bottom: none;
         }
@@ -739,9 +738,16 @@
             margin: 0px 0px 0px -10px;
         }
         
-        .asker-question p,
-        .answerer-answer p {
-            margin: 0px !important;
+        .asker-question p:last-of-type,
+        .answerer-answer p:last-of-type {
+            margin-bottom: 0px !important;
+        }
+        
+        .asker-question > .tmblr-full,
+        .asker-question > .npf_photoset,
+        .answerer-answer > .tmblr-full,
+        .answerer-answer > .npf_photoset {
+            margin-top: 10px !important;
         }
 
         .question a, 
@@ -790,10 +796,6 @@
             bottom: 0;
             right: 0;
             margin: 0px -10px 0px 0px;
-        }
-        
-        .answerer-answer > .tmblr-full {
-            margin-top: 10px;
         }
         
         /* 
@@ -1074,9 +1076,9 @@
                         <a href="{Permalink}">{DayOfMonth} {Month} {Year}</a>
                     {block:RebloggedFrom}
                         <div class="reblog_source">
-                            <a href="{ReblogParentURL}" title="{ReblogParentName}"><img data-tippy-content="via {ReblogParentName}" src="{ReblogParentPortraitURL-16}"></a>
+                            <a href="{ReblogParentURL}"><img data-tippy-content="via {ReblogParentName}" src="{ReblogParentPortraitURL-16}"></a>
                     {block:ContentSource}{block:RebloggedFrom}
-                            <a href="{ReblogRootURL}" title="{ReblogRootName}"><img class="reblog_root" data-tippy-content="from {ReblogRootName}" src="{ReblogRootPortraitURL-16}"></a>
+                            <a href="{ReblogRootURL}"><img class="reblog_root" data-tippy-content="from {ReblogRootName}" src="{ReblogRootPortraitURL-16}"></a>
                     {/block:RebloggedFrom}{/block:ContentSource}
                         </div>
                     {/block:RebloggedFrom}
@@ -1262,7 +1264,7 @@
             });
             // Unnest
             $('.post').unnest({
-                yourCaption: '.caption, .text_body', 
+                yourCaption: '.caption, .text_body, .replies', 
                 wrapName: '.tumblr_parent', 
                 newCaptionUsername: true, 
                 originalPostCaptionUsername: false, 
@@ -1307,9 +1309,7 @@
             // Animation on scroll
             AOS.init({
                 duration: {text:On Scroll Animation Duration},
-            {block:IfOnScrollAnimationHappensOnlyOnce}
                 once: true
-            {/block:IfOnScrollAnimationHappensOnlyOnce}
             });
         </script>
     </body>
